@@ -1,28 +1,36 @@
 {
-    "books": [
-        {
-            "id": 1,
-            "title": "Il nome della Rosa",
-            "author": "Umberto Eco",
-            "price": 20,
-            "isbn": "978-81-7525-766-5",
-            "description": "Il nome della Rosa"
-        },
-        {
-            "id": 2,
-            "title": " Il Diario di Anna Frank",
-            "author": "Anna Frank",
-            "price": 12,
-            "isbn": "978-81-7525-766-5",
-            "description": "Diario di Anna Frank"
-        },
-        {
-            "id": 3,
-            "title": "Gli arancini di Montalbano",
-            "author": "Andrea Camilleri",
-            "price": 11,
-            "isbn": "978-81-7525-766-5",
-            "description": "Gli arancini di Montalbano"
-      }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "title": "Il nome della Rosa",
+      "author": "Umberto Eco",
+      "price": 20,
+      "isbn": "978-81-7525-766-5",
+      "description": "Il nome della Rosa"
+    },
+    {
+      "id": 2,
+      "title": " Il Diario di Anna Frank",
+      "author": "Anna Frank",
+      "price": 12,
+      "isbn": "978-81-7525-766-5",
+      "description": "Diario di Anna Frank"
+    },
+    {
+      "id": 3,
+      "title": "Gli arancini di Montalbano",
+      "author": "Andrea Camilleri",
+      "price": 11,
+      "isbn": "978-81-7525-766-5",
+      "description": "Gli arancini di Montalbano"
+    },
+    {
+      "title": "WE",
+      "author": "figa",
+      "price": 8,
+      "isbn": "878-988",
+      "description": "ciao",
+      "id": 4
+    }
+  ]
 }
