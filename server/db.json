@@ -1,12 +1,12 @@
 {
   "books": [
     {
-      "id": 1,
       "title": "Il nome della Rosa",
       "author": "Umberto Eco",
       "price": 20,
       "isbn": "978-81-7525-766-5",
-      "description": "Il nome della Rosa"
+      "description": "Il nome della Rosa",
+      "id": 1
     },
     {
       "id": 2,
@@ -27,10 +27,18 @@
     {
       "title": "WE",
       "author": "figa",
-      "price": 8,
-      "isbn": "878-988",
-      "description": "ciao",
+      "price": 1,
+      "isbn": "sussy baka",
+      "description": "ciaosasa",
       "id": 4
+    },
+    {
+      "title": "NEGUS",
+      "author": "BLACK NIBBA",
+      "price": 0,
+      "isbn": "NAH",
+      "description": "It is right.",
+      "id": 5
     }
   ]
 }

@@ -30,6 +30,7 @@ export class BookComponent implements OnInit {
 
   books: Book[] = [];
   error: any;
+  active: Book | undefined;
   constructor(private http: HttpClient) { }
 
   getAll() {
@@ -41,6 +42,14 @@ export class BookComponent implements OnInit {
     );
   }
 
+  save(form : NgForm) {
+    if(this.active){
+      this.edit(form);
+    } else {
+      this.add(form);
+    }
+  }
+
   add(form : NgForm) {
     this.http.post<Book>(`${ApiUrl}`, form.value)
       .subscribe((res : Book) => {
@@ -48,7 +57,16 @@ export class BookComponent implements OnInit {
       })
   }
 
-  delete(book: Book) {
+  edit(form : NgForm) {
+    this.http.patch<Book>(`${ApiUrl}/${this.active?.id}`, form.value)
+      .subscribe( res => {
+        const index = this.books.findIndex(b => b.id === this.active?.id);
+        this.books[index] = res;
+      });
+  }
+
+  delete(event: any, book: Book) {
+    event.stopPropagation();
     // const index = this.books.indexOf(book);
     const index = this.books.findIndex(b => b.id === book.id);
     this.http.delete<Book>(`${ApiUrl}/${book.id}`)
@@ -57,6 +75,15 @@ export class BookComponent implements OnInit {
       },
       (error) => this.error = error
       );
+  }
+
+  reset(form: NgForm) {
+    this.active = undefined;
+    form.resetForm();
+  }
+
+  setActive(book: Book) {
+    this.active = book;
   }
 
   ngOnInit(): void {
