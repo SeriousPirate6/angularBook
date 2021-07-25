@@ -30,8 +30,8 @@ import { Component, OnInit } from '@angular/core';
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1 class="title"><i class="fa fa-star" [style.color]='red'></i>ER CATCALLING</h1>
-            <span class="subheading">Pa du fischi er cat calling "Damiano Er Faina"</span>
+            <h1 class="title"><i class="fa fa-female" [style.color]='red'></i> ER CATCALLING</h1>
+            <span class="subheading" [style.color]='violet'>"Pa du fischi er cat calling" - Damiano Er Faina</span>
           </div>
         </div>
       </div>
@@ -77,6 +77,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   red: string = "";
+  violet: string = 'violet';
 
   constructor() { }
 

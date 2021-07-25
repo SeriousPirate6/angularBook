@@ -9,6 +9,7 @@
               [ngClass]="{'active': book.id === active?.id}"
               (click)="setActive(book)"
               >
+              <img [src]="book.img ? book.img : '../../assets/img/game-.png'" class="img-thumbnail mr2" alt="" width="40">
               {{book.title}} - {{book.author}}
               <div class="pull-right">
                 <span [style.color]="book.price > 15 ? 'red' : 'null'">€ {{book.price | number: '1.2-2'}}</span>
@@ -34,6 +35,16 @@
             <div class="form-group">
               <textarea [ngModel]="active?.description" class="form-control" rows="3" name="description" placeholder="Insert description"></textarea>
             </div>
+            <div class="form-group">
+              <input style="display: none;" type="file" class="form-control" name="img" (change)="readUrl($event)" #selectedFile>
+            </div>
+            <div class="mb-3">
+              <img *ngIf="active" [src]="active?.img" height="130">
+              <img *ngIf="this.imageSrc" [src]="imageSrc" height="130">
+              <button type="button" class="btn btn-outline-warning btn-sm ml-1" (click)="selectedFile.click()">SELECT IMAGE</button>
+            </div>
+            <input *ngIf="this.imageSrc" [ngModel]="this.imageSrc" type="hidden" name="img">
+            <input *ngIf="active" [ngModel]="active!.img" type="hidden" name="img">
             <button type="submit" class="btn btn-outline-warning btn-sm mr-1">{{active ? 'EDIT' : 'ADD'}}</button>
             <button type="button" class="btn btn-outline-success btn-sm mr-1" (click)="reset(f)">RESET</button>
           </form>

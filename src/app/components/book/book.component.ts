@@ -30,7 +30,8 @@ export class BookComponent implements OnInit {
 
   books: Book[] = [];
   error: any;
-  active: Book | undefined;
+  active?: Book;
+  imageSrc?: String;
   constructor(private http: HttpClient) { }
 
   getAll() {
@@ -54,6 +55,8 @@ export class BookComponent implements OnInit {
     this.http.post<Book>(`${ApiUrl}`, form.value)
       .subscribe((res : Book) => {
         this.books.push(res);
+        form.reset();
+        this.imageSrc=undefined;
       })
   }
 
@@ -79,11 +82,29 @@ export class BookComponent implements OnInit {
 
   reset(form: NgForm) {
     this.active = undefined;
+    this.imageSrc = undefined;
     form.resetForm();
   }
 
   setActive(book: Book) {
     this.active = book;
+  }
+
+  readUrl(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const[file] = event.target.files;
+      reader.readAsDataURL(file);
+      if(this.active) {
+        reader.onload = () => {
+          this.active!.img = reader.result as string;
+        }
+      } else {
+        reader.onload = () => {
+          this.imageSrc = reader.result as String;
+        }
+      }
+    }
   }
 
   ngOnInit(): void {

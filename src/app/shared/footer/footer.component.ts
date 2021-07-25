@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
               <a href="#">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
@@ -20,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
               <a href="#">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  <i class="fa fa-facebook-f fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
@@ -28,7 +28,7 @@ import { Component, OnInit } from '@angular/core';
               <a href="#">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
