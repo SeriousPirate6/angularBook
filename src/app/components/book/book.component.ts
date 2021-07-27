@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book } from 'src/app/model/book';
 import { NgForm } from '@angular/forms';
-
-const ApiUrl = 'http://localhost:3000/books';
+import { BookServiceService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-book',
@@ -18,12 +17,6 @@ const ApiUrl = 'http://localhost:3000/books';
       background-color: darkorange;
       border-color: darkorange;
     }
-    btn-sm {
-      padding: .25rem .5rem;
-      font-size: .875rem;
-      line-border: 1.5;
-      border-radius: .2rem;
-    }
   `]
 })
 export class BookComponent implements OnInit {
@@ -32,10 +25,10 @@ export class BookComponent implements OnInit {
   error: any;
   active?: Book;
   imageSrc?: String;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private bookService: BookServiceService) { }
 
   getAll() {
-    this.http.get<Book[]>(ApiUrl)
+    this.bookService.getAll()
     .subscribe( (res: Book[]) => {
       this.books = res;
     },
@@ -43,36 +36,11 @@ export class BookComponent implements OnInit {
     );
   }
 
-  save(form : NgForm) {
-    if(this.active){
-      this.edit(form);
-    } else {
-      this.add(form);
-    }
-  }
-
-  add(form : NgForm) {
-    this.http.post<Book>(`${ApiUrl}`, form.value)
-      .subscribe((res : Book) => {
-        this.books.push(res);
-        form.reset();
-        this.imageSrc=undefined;
-      })
-  }
-
-  edit(form : NgForm) {
-    this.http.patch<Book>(`${ApiUrl}/${this.active?.id}`, form.value)
-      .subscribe( res => {
-        const index = this.books.findIndex(b => b.id === this.active?.id);
-        this.books[index] = res;
-      });
-  }
-
   delete(event: any, book: Book) {
     event.stopPropagation();
     // const index = this.books.indexOf(book);
     const index = this.books.findIndex(b => b.id === book.id);
-    this.http.delete<Book>(`${ApiUrl}/${book.id}`)
+    this.bookService.deleteBook(book)
       .subscribe(() => {
         this.books.splice(index, 1);
       },
@@ -80,31 +48,8 @@ export class BookComponent implements OnInit {
       );
   }
 
-  reset(form: NgForm) {
-    this.active = undefined;
-    this.imageSrc = undefined;
-    form.resetForm();
-  }
-
   setActive(book: Book) {
     this.active = book;
-  }
-
-  readUrl(event: any) {
-    const reader = new FileReader();
-    if(event.target.files && event.target.files.length) {
-      const[file] = event.target.files;
-      reader.readAsDataURL(file);
-      if(this.active) {
-        reader.onload = () => {
-          this.active!.img = reader.result as string;
-        }
-      } else {
-        reader.onload = () => {
-          this.imageSrc = reader.result as String;
-        }
-      }
-    }
   }
 
   ngOnInit(): void {
