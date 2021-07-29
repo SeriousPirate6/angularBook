@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Book } from 'src/app/model/book';
 import { BookServiceService } from 'src/app/service/book.service';
+import { EventEmitter } from '@angular/core';
 
 const ApiUrl = 'http://localhost:3000/books';
 
@@ -54,6 +55,7 @@ export class FormComponent implements OnInit {
 
   @Input() active: Book | undefined;
   @Input() books: Book[] = [];
+  @Output() resetClick: EventEmitter<Book> = new EventEmitter<Book>();
   imageSrc?: String;
   error: any;
   constructor(private http: HttpClient, private bookService: BookServiceService) { } 
@@ -87,6 +89,7 @@ export class FormComponent implements OnInit {
     this.active = undefined;
     this.imageSrc = undefined;
     form.resetForm();
+    this.resetClick.emit();
   }
 
   readUrl(event: any) {

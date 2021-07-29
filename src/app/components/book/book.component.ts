@@ -56,4 +56,8 @@ export class BookComponent implements OnInit {
     this.getAll();
   }
 
+  reset() {
+    this.active = undefined;
+  }
+
 }
