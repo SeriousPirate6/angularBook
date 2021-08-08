@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './shared/form/form.component';
+import { BookDetailComponent } from './features/book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormComponent } from './shared/form/form.component';
     HeaderComponent,
     FooterComponent,
     FormComponent,
+    BookDetailComponent,
   ],
   imports: [
     BrowserModule,

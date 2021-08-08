@@ -13,6 +13,7 @@
               {{book.title}} - {{book.author}}
               <div class="pull-right">
                 <span [style.color]="book.price > 15 ? 'red' : 'null'">€ {{book.price | number: '1.2-2'}}</span>
+                <i class="fa fa-info-circle ml-2" aria-hidden="true" [routerLink]="['/book', book.id]"></i>
                 <i class="fa fa-trash ml-2" (click)="delete($event, book)"></i>
               </div>
             </li>
