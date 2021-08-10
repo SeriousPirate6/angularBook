@@ -4,7 +4,7 @@ import { Book } from '../model/book';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
-const ApiUrl = 'http://localhost:3000/books';
+const ApiUrl = 'http://localhost:8080/bookServer/';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +20,15 @@ export class BookServiceService {
   }
 
   editBook(form: NgForm, active: Book) : Observable<Book> {
-    return this.http.patch<Book>(`${ApiUrl}/${active?.id}`, form.value)
+    return this.http.patch<Book>(`${ApiUrl}?id=${active?.id}`, form.value)
   }
 
   deleteBook(book: Book) : Observable<Book> {
-    return this.http.delete<Book>(`${ApiUrl}/${book.id}`)
+    return this.http.delete<Book>(`${ApiUrl}?id=${book.id}`)
   }
 
   detailBook(id: number) : Observable<Book> {
-    return this.http.get<Book>(`${ApiUrl}/${id}`);
+    return this.http.get<Book>(`${ApiUrl}?id=${id}`);
   }
 
   constructor(private http: HttpClient) { }
