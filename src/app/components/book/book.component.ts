@@ -17,6 +17,21 @@ import { BookServiceService } from 'src/app/service/book.service';
       background-color: darkorange;
       border-color: darkorange;
     }
+    
+    .search-book {
+      max-width: 500px;
+      padding-bottom: 10px;
+      margin: auto;
+      color: #405065;
+    }
+
+    .form-control {
+      box-shadow: 0 10px 40px 0 #B0C1D9;
+    }
+
+    .form-control::placeholder {
+      font-family: FontAwesome;
+    }
   `]
 })
 export class BookComponent implements OnInit {
@@ -25,6 +40,9 @@ export class BookComponent implements OnInit {
   error: any;
   active?: Book;
   imageSrc?: String;
+  p = 1;
+  term = "";
+
   constructor(private http: HttpClient, private bookService: BookServiceService) { }
 
   getAll() {

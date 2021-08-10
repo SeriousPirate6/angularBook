@@ -3,9 +3,20 @@
       <div class="row">
         <div *ngIf="error" class="alert alert-danger">ERROR!1!</div>
         <div class="col-lg-6 col-md-12 mx-0">
+          <app-spinner *ngIf="!books"></app-spinner>
+          <div class="search-book">
+            <input
+              type="text"
+              class="form-control"
+              name="search"
+              [(ngModel)]="term"
+              autocomplete="off"
+              placeholder="&#61442; Cerca tramite titolo o autore..."
+            >
+          </div>
           <ul class="list-group">
             <li class="list-group-item"
-              *ngFor="let book of books"
+              *ngFor="let book of books | paginate: {itemsPerPage: 5, currentPage: p} |filter:term"
               [ngClass]="{'active': book.id === active?.id}"
               (click)="setActive(book)"
               >
@@ -18,12 +29,15 @@
               </div>
             </li>
           </ul>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
-        <app-form
-          [active]="active"
-          [books]="books"
-          (resetClick) = "reset()"
-        ></app-form>
+        <div class="col-lg-6 col-md12 mx-0">
+          <app-form
+            [active]="active"
+            [books]="books"
+            (resetClick) = "reset()">
+          </app-form>
+        </div>
       </div>
     </div>
   

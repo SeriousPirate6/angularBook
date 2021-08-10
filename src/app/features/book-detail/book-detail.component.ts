@@ -8,6 +8,7 @@ import { Location } from '@angular/common'
 @Component({
   selector: 'app-book-detail',
   template: `
+  <app-spinner *ngIf="!book" ></app-spinner>
   <div *ngIf="book" class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="pull-right">
@@ -27,7 +28,7 @@ import { Location } from '@angular/common'
           Isbn:  {{book.isbn}}
         </small>
         <p class="post-title bellottaFont">
-          {{book.description}}
+          {{book.description | truncate: 900}}
         </p>
         <button class="btn btn-outline-warning btn-sm mr-1" (click)="goBack()">Go Back</button>
       </div>

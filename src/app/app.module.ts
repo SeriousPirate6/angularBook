@@ -11,6 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './shared/form/form.component';
 import { BookDetailComponent } from './features/book-detail/book-detail.component';
+import { SpinnerComponent } from './features/spinner/spinner.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TruncatePipe } from './pipe/truncate.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { BookDetailComponent } from './features/book-detail/book-detail.componen
     FooterComponent,
     FormComponent,
     BookDetailComponent,
+    SpinnerComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,8 @@ import { BookDetailComponent } from './features/book-detail/book-detail.componen
     NgbModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
