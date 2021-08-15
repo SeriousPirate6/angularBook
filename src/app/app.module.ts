@@ -15,6 +15,7 @@ import { SpinnerComponent } from './features/spinner/spinner.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TruncatePipe } from './pipe/truncate.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BookDetailComponent,
     SpinnerComponent,
     TruncatePipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
