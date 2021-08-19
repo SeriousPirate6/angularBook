@@ -19,7 +19,7 @@ export class AuthService {
     const body = this.body(datiForm);
     return this.http.post(ApiUrl, body, {headers: this.options})
       .pipe(
-        map(res => {
+        map((res : any) => {
           if (res['token']){
             this.setSession(res['token']);
           }
