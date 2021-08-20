@@ -11,12 +11,13 @@ const ApiUrl = 'http://localhost:8080/bookServer/auth/';
 })
 export class AuthService {
 
-  private options : HttpHeaders = new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded');
+  private options : HttpHeaders = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded');
 
   constructor(private http: HttpClient) { }
 
   login(datiForm : NgForm) : Observable<string>  {
-    const body = this.body(datiForm);
+    console.log(datiForm.value);
+    let body = this.body(datiForm);
     return this.http.post(ApiUrl, body, {headers: this.options})
       .pipe(
         map((res : any) => {
@@ -35,15 +36,15 @@ export class AuthService {
   }
 
   private setSession(jwt: string) {
-    const expire: number = new Date().getTime() + 10000;
+    let expire: number = new Date().getTime() + 10000;
     localStorage.setItem('token', jwt);
     localStorage.setItem('expired', expire.toString());
   }
 
   notExpired() : boolean {
-    if(localStorage.getItem('expire')) {
+    if(localStorage.getItem('expired')) {
       //Il ! crea un oggetto se è null;
-      const expire : number = parseInt(localStorage.getItem('expire')!);
+      let expire : number = parseInt(localStorage.getItem('expired')!);
       return new Date().getTime() < expire;
     }
     return false;
@@ -54,6 +55,7 @@ export class AuthService {
     let params = new HttpParams()
       .set('username', df.value.username)
       .set('password', df.value.password);
+    return params;
   }
 
   private errorHandler(error: any) {

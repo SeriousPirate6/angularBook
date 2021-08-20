@@ -7,10 +7,9 @@ import { BookDetailComponent } from './features/book-detail/book-detail.componen
 import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
+  {path: 'book', component: BookComponent, canActivate: [LoginGuard]},
   {path: '', component: HomeComponent},
   {path: 'book/:id', component: BookDetailComponent},
-  {path: 'book', component: BookComponent, canActivate: [LoginGuard]},
-  {path: '', component: BookComponent},
   {path: 'login', component: LoginComponent}
 ];
 
