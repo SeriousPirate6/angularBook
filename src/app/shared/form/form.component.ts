@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Book } from 'src/app/model/book';
-import { BookServiceService } from 'src/app/service/book.service';
+import { BookService } from 'src/app/service/book.service';
 import { EventEmitter } from '@angular/core';
 
 const ApiUrl = 'http://localhost:3000/books';
@@ -58,7 +58,7 @@ export class FormComponent implements OnInit {
   @Output() resetClick: EventEmitter<Book> = new EventEmitter<Book>();
   imageSrc?: String;
   error: any;
-  constructor(private http: HttpClient, private bookService: BookServiceService) { } 
+  constructor(private http: HttpClient, private bookService: BookService) { } 
 
   save(form : NgForm) {
     if(this.active){

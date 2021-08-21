@@ -9,7 +9,7 @@ const ApiUrl = 'http://localhost:8080/bookServer/';
 @Injectable({
   providedIn: 'root'
 })
-export class BookServiceService {
+export class BookService {
   
   getAll() : Observable <Book[]> {
     return this.http.get<Book[]>(ApiUrl);

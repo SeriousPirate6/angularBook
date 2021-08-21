@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book } from 'src/app/model/book';
 import { NgForm } from '@angular/forms';
-import { BookServiceService } from 'src/app/service/book.service';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-book',
@@ -43,7 +43,7 @@ export class BookComponent implements OnInit {
   p = 1;
   term = "";
 
-  constructor(private http: HttpClient, private bookService: BookServiceService) { }
+  constructor(private http: HttpClient, private bookService: BookService) { }
 
   getAll() {
     this.bookService.getAll()

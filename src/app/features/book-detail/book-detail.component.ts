@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/model/book';
-import { BookServiceService } from 'src/app/service/book.service';
+import { BookService } from 'src/app/service/book.service';
 import { Location } from '@angular/common'
 
 @Component({
@@ -53,7 +53,7 @@ export class BookDetailComponent implements OnInit {
   book: Book | undefined;
 
   constructor(
-    private bookService: BookServiceService,
+    private bookService: BookService,
     private location: Location,
     private activatedRoute: ActivatedRoute
   ) { }
