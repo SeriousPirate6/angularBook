@@ -58,6 +58,13 @@ export class AuthService {
     return params;
   }
 
+  checkDir(): string {
+    if(this.notExpired()) {
+      return 'book/';
+    }
+    return '';
+  }
+
   private errorHandler(error: any) {
     console.log(error);
     let msg : string | undefined;

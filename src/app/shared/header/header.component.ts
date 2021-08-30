@@ -18,13 +18,7 @@ import {DOCUMENT} from '@angular/common';
         <div [ngbCollapse]="!isCollapsed" class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" *ngFor="let link of linkMenu">
-              <a class="nav-link" ></a>
-            </li>
-            <li *ngIf="this.auth.notExpired()" class="nav-item">
-              <a class="nav-link" routerLink="/dashboard/users">Users</a>
-            </li>
-            <li *ngIf="this.auth.notExpired()" class="nav-item">
-              <a class="nav-link" routerLink="/dashboard/register">Register</a>
+              <a class="nav-link" [routerLink]="this.auth.checkDir() + link.url">{{link.text}}</a>
             </li>
             <li *ngIf="!this.auth.notExpired(); else logout" class="nav-item">
               <a class="nav-link" routerLink="login">Login <i class="fa fa-lock"></i></a>
